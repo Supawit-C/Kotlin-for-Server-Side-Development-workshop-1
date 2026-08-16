@@ -1,5 +1,9 @@
+import org.example.celsiusToFahrenheit
+import org.example.kilometersToMiles
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import org.example.Product
+import org.example.calculateTotalElectronicsPriceOver500
 
 class WorkshopTest {
 
@@ -25,6 +29,12 @@ class WorkshopTest {
     @Test
     fun `test celsiusToFahrenheit with zero`() {
 
+        val celsiusInput = 0.0
+        val expectedFahrenheit = 32.0
+        val actualFahrenheit = celsiusToFahrenheit(celsiusInput)
+
+        assertEquals(expectedFahrenheit, actualFahrenheit, 0.001, "0°C should be 32°F")
+
     }
 
     // celsius input: -10.0
@@ -32,6 +42,12 @@ class WorkshopTest {
     @Test
     fun `test celsiusToFahrenheit with negative value`() {
 
+        val celsiusInput = -10.0
+        val expectedFahrenheit = 14.0
+        val actualFahrenheit = celsiusToFahrenheit(celsiusInput)
+
+
+        assertEquals(expectedFahrenheit, actualFahrenheit, 0.001, "-10°C should be 14°F")
     }
 
     // test for kilometersToMiles function
@@ -39,6 +55,11 @@ class WorkshopTest {
     // expected output: 0.621371
     @Test
     fun `test kilometersToMiles with one kilometer`() {
+        val kilometersInput = 1.0
+        val expectedMile = 0.621371
+        val actualMile = kilometersToMiles(kilometersInput)
+
+        assertEquals(expectedMile, actualMile, 0.001, "0°C should be 32°F")
 
     }
 
@@ -54,6 +75,17 @@ class WorkshopTest {
     // จงเขียน test cases เช็คจำนวนสินค้าที่อยู่ในหมวด 'Electronics' และมีราคามากกว่า 500 บาท
     // 🚨
 
+    @Test
+    fun `test calculateTotalElectronicsPriceOver500`() {
+        val mockProducts = listOf(
+            Product("TV", 1000.0, "Electronics"),
+            Product("Mouse", 200.0, "Electronics"),
+            Product("Shirt", 800.0, "Apparel")
+        )
+        val expected = 1000.0
 
-    // --- Tests for Workshop #2: Data Analysis Pipeline End ---
+        val actualResult = calculateTotalElectronicsPriceOver500(mockProducts)
+
+        assertEquals(expected, actualResult, 0.001, " should equal to 1000")
+    }
 }

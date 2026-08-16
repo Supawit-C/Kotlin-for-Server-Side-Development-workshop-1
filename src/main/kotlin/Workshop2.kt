@@ -73,3 +73,6 @@ fun main() {
     println("   - จะไม่มีการสร้าง Collection กลางทาง ทำให้ประหยัดหน่วยความจำและเร็วกว่ามากสำหรับชุดข้อมูลขนาดใหญ่ เพราะทำงานกับข้อมูลทีละชิ้นและทำทุกขั้นตอนให้เสร็จในรอบเดียว")
     println("   - การคำนวณจะเกิดขึ้นเมื่อมี 'Terminal Operation' มาเรียกใช้เท่านั้น (ในที่นี้คือ .sum())")
 }
+fun calculateTotalElectronicsPriceOver500(products: List<Product>): Double {
+    return products.asSequence().filter{it.category == "Electronics"}.filter{it.price>500}.map{it.price}.sum()
+}
